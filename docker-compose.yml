@@ -1,0 +1,15 @@
+services:
+  vue:
+    container_name: "${COMPOSE_PROJECT_NAME}-vue"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${HOST_MACHINE_UNSECURE_HOST_PORT}:5173"
+    volumes:
+      - ${DOCUMENT_ROOT}:/app:rw
+    hostname: "${APP_URL}"
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
