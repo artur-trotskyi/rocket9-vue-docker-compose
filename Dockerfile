@@ -1,5 +1,11 @@
-FROM node:22
+FROM node:22-alpine
+
+RUN npm install -g http-server
 
 WORKDIR /app
 
-ENTRYPOINT ["/bin/sh", "-c", "if [ -f /app/package.json ]; then npm run dev -- --host; else echo 'package.json not found, skipping installation and start.'; tail -f /dev/null; fi"]
+COPY package*.json ./
+
+RUN apk add --no-cache bash
+
+CMD ["sh", "-c", "ls -la /app && tail -f /dev/null"]

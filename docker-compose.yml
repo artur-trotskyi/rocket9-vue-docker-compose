@@ -11,5 +11,6 @@ services:
     hostname: "${APP_URL}"
     environment:
       - NODE_ENV=development
+    command: [ "sh", "-c", "npm install && npm run dev" ]
     stdin_open: true
     tty: true
