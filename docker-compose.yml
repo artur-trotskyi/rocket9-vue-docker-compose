@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "${HOST_MACHINE_UNSECURE_HOST_PORT}:5173"
+      - "5000:5000"
     volumes:
       - ${DOCUMENT_ROOT}:/app:rw
     hostname: "${APP_URL}"
